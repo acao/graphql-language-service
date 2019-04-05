@@ -7,7 +7,8 @@
  *
  *  @flow
  */
-
+import fs from 'fs'
+import path from 'path'
 import {expect} from 'chai';
 import {GraphQLSchema} from 'graphql/type';
 import {parse} from 'graphql/language';
@@ -188,7 +189,7 @@ describe('GraphQLCache', () => {
     const query = `type Query {
         hero(episode: Episode): Character
       }
-      
+
       type Episode {
         id: ID!
       }

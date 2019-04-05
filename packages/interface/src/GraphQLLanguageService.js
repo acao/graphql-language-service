@@ -47,12 +47,14 @@ const {
   UNION_TYPE_DEFINITION,
   SCALAR_TYPE_DEFINITION,
   INPUT_OBJECT_TYPE_DEFINITION,
+  INPUT_UNION_TYPE_DEFINITION,
   SCALAR_TYPE_EXTENSION,
   OBJECT_TYPE_EXTENSION,
   INTERFACE_TYPE_EXTENSION,
   UNION_TYPE_EXTENSION,
   ENUM_TYPE_EXTENSION,
   INPUT_OBJECT_TYPE_EXTENSION,
+  INPUT_UNION_TYPE_EXTENSION,
   DIRECTIVE_DEFINITION,
   FRAGMENT_SPREAD,
   OPERATION_DEFINITION,
@@ -95,6 +97,8 @@ export class GraphQLLanguageService {
             case UNION_TYPE_EXTENSION:
             case ENUM_TYPE_EXTENSION:
             case INPUT_OBJECT_TYPE_EXTENSION:
+            case INPUT_UNION_TYPE_DEFINITION:
+            case INPUT_UNION_TYPE_EXTENSION:
             case DIRECTIVE_DEFINITION:
               return true;
           }
@@ -261,6 +265,7 @@ export class GraphQLLanguageService {
       definition =>
         definition.kind === OBJECT_TYPE_DEFINITION ||
         definition.kind === INPUT_OBJECT_TYPE_DEFINITION ||
+        definition.kind === INPUT_UNION_TYPE_DEFINITION ||
         definition.kind === ENUM_TYPE_DEFINITION,
     );
 

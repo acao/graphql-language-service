@@ -25,6 +25,7 @@ import {
   GraphQLBoolean,
   GraphQLEnumType,
   GraphQLInputObjectType,
+  GraphQLInputUnionType,
   GraphQLList,
   SchemaMetaFieldDef,
   TypeMetaFieldDef,
@@ -503,6 +504,8 @@ function canUseDirective(
       return locations.indexOf('ENUM_VALUE') !== -1;
     case 'InputDef':
       return locations.indexOf('INPUT_OBJECT') !== -1;
+    case 'InputUnionDef':
+      return locations.indexOf('INPUT_UNION') !== -1;
     case 'InputValueDef':
       const prevStateKind = state.prevState && state.prevState.kind;
       switch (prevStateKind) {
@@ -626,6 +629,13 @@ export function getTypeInfo(
         objectFieldDefs =
           objectType instanceof GraphQLInputObjectType
             ? objectType.getFields()
+            : null;
+        break;
+      case 'InputUnionValue':
+        const inputUnionType = getNamedType(inputType);
+        objectFieldDefs =
+          inputUnionType instanceof GraphQLInputUnionType
+            ? inputUnionType.getFields()
             : null;
         break;
       case 'ObjectField':

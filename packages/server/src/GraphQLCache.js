@@ -43,12 +43,14 @@ const {
   UNION_TYPE_DEFINITION,
   SCALAR_TYPE_DEFINITION,
   INPUT_OBJECT_TYPE_DEFINITION,
+  INPUT_UNION_TYPE_DEFINITION,
   SCALAR_TYPE_EXTENSION,
   OBJECT_TYPE_EXTENSION,
   INTERFACE_TYPE_EXTENSION,
   UNION_TYPE_EXTENSION,
   ENUM_TYPE_EXTENSION,
   INPUT_OBJECT_TYPE_EXTENSION,
+  INPUT_UNION_TYPE_EXTENSION,
   DIRECTIVE_DEFINITION,
 } = Kind;
 
@@ -228,6 +230,9 @@ export class GraphQLCache implements GraphQLCacheInterface {
       InputObjectTypeDefinition(node) {
         existingObjectTypes.set(node.name.value, true);
       },
+      InputUnionTypeDefinition(node) {
+        existingObjectTypes.set(node.name.value, true);
+      },
       EnumTypeDefinition(node) {
         existingObjectTypes.set(node.name.value, true);
       },
@@ -254,6 +259,7 @@ export class GraphQLCache implements GraphQLCacheInterface {
             !referencedObjectTypes.has(node.name.value) &&
             objectTypeDefinitions.get(node.name.value)
           ) {
+            console.log('name', node.name.value)
             asts.add(nullthrows(objectTypeDefinitions.get(node.name.value)));
             referencedObjectTypes.add(node.name.value);
           }
@@ -603,12 +609,14 @@ export class GraphQLCache implements GraphQLCacheInterface {
             case UNION_TYPE_DEFINITION:
             case SCALAR_TYPE_DEFINITION:
             case INPUT_OBJECT_TYPE_DEFINITION:
+            case INPUT_UNION_TYPE_DEFINITION:
             case SCALAR_TYPE_EXTENSION:
             case OBJECT_TYPE_EXTENSION:
             case INTERFACE_TYPE_EXTENSION:
             case UNION_TYPE_EXTENSION:
             case ENUM_TYPE_EXTENSION:
             case INPUT_OBJECT_TYPE_EXTENSION:
+            case INPUT_UNION_TYPE_EXTENSION:
             case DIRECTIVE_DEFINITION:
               typeExtensions.push(definition);
               break;
@@ -820,6 +828,7 @@ export class GraphQLCache implements GraphQLCacheInterface {
             if (
               definition.kind === OBJECT_TYPE_DEFINITION ||
               definition.kind === INPUT_OBJECT_TYPE_DEFINITION ||
+              definition.kind === INPUT_UNION_TYPE_DEFINITION ||
               definition.kind === ENUM_TYPE_DEFINITION
             ) {
               objectTypeDefinitions.set(definition.name.value, {

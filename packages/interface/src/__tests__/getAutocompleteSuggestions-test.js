@@ -80,6 +80,7 @@ describe('getAutocompleteSuggestions', () => {
       {label: 'hero', detail: 'Character'},
       {label: 'human', detail: 'Human'},
       {label: 'inputTypeTest', detail: 'TestType'},
+      {label: 'inputUnionTest', detail: 'TestType'},
     ]);
 
     // Test for query text with empty lines
@@ -97,6 +98,7 @@ query name {
       {label: 'hero', detail: 'Character'},
       {label: 'human', detail: 'Human'},
       {label: 'inputTypeTest', detail: 'TestType'},
+      {label: 'inputUnionTest', detail: 'TestType'},
     ]);
   });
 
@@ -107,6 +109,7 @@ query name {
       {label: 'hero', detail: 'Character'},
       {label: 'human', detail: 'Human'},
       {label: 'inputTypeTest', detail: 'TestType'},
+      {label: 'inputUnionTest', detail: 'TestType'},
     ]);
   });
 

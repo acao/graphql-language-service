@@ -81,6 +81,8 @@ export const ParseRules: {[name: string]: ParseRule} = {
         return 'EnumDef';
       case 'input':
         return 'InputDef';
+      case 'inputUnion':
+        return 'InputUnionDef';
       case 'extend':
         return 'ExtendDef';
       case 'directive':
@@ -196,6 +198,7 @@ export const ParseRules: {[name: string]: ParseRule} = {
   Type(token: Token) {
     return token.value === '[' ? 'ListType' : 'NonNullType';
   },
+  InputUnionValue: [p('{'), list('ObjectField'), p('}')],
   // NonNullType has been merged into ListType to simplify.
   ListType: [p('['), 'Type', p(']'), opt(p('!'))],
   NonNullType: ['NamedType', opt(p('!'))],
@@ -252,6 +255,14 @@ export const ParseRules: {[name: string]: ParseRule} = {
     list('UnionMember', p('|')),
   ],
   UnionMember: ['NamedType'],
+  InputUnionDef: [
+    word('inputUnion'),
+    name('atom'),
+    list('Directive'),
+    p('='),
+    list('InputUnionMember', p('|')),
+  ],
+  InputUnionMember: ['NamedType'],
   EnumDef: [
     word('enum'),
     name('atom'),

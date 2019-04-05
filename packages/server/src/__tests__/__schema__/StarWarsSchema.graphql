@@ -40,13 +40,21 @@ input InputType {
   value: Int = 42
 }
 
+input AltInputType {
+  key: String!
+  value: String
+}
+
 type TestType {
   testField: String
 }
+
+inputUnion ExampleInputUnion = InputType | AltInputType
 
 type Query {
   hero(episode: Episode): Character
   human(id: String!): Human
   droid(id: String!): Droid
   inputTypeTest(args: InputType = {key: "key"}): TestType
+  inputUnionTest(args: ExampleInputUnion): TestType
 }
