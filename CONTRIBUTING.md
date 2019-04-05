@@ -74,7 +74,7 @@ Complete your CLA here: <https://code.facebook.com/cla>
 
   then from this project:
   ```sh
-  yarn link
+    yarn link graphql
   ```
 
 ## Release on NPM
