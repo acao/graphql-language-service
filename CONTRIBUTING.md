@@ -62,6 +62,21 @@ Complete your CLA here: <https://code.facebook.com/cla>
    npm test
    ```
 
+6. (optional) Link to `graphql/graphql-js` locally
+
+  from `graphql-js` repository:
+  ```sh
+    yarn
+    yarn build
+    cd dist
+    yarn link
+  ```
+
+  then from this project:
+  ```sh
+  yarn link
+  ```
+
 ## Release on NPM
 
 *Only core contributors may release to NPM.*

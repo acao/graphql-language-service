@@ -259,7 +259,6 @@ export class GraphQLCache implements GraphQLCacheInterface {
             !referencedObjectTypes.has(node.name.value) &&
             objectTypeDefinitions.get(node.name.value)
           ) {
-            console.log('name', node.name.value)
             asts.add(nullthrows(objectTypeDefinitions.get(node.name.value)));
             referencedObjectTypes.add(node.name.value);
           }
