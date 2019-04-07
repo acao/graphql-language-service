@@ -12,6 +12,8 @@ enum Color {
   BLUE
 }
 
+inputUnion InputUnionType = String | Float | Boolean
+
 union UnionType = String | Float | Boolean
 
 interface TestInterface {
@@ -27,11 +29,11 @@ type TestType implements TestInterface {
 }
 
 type Query {
-
   """ This is field documentation for Query.thing """
   thing: TestType
   listOfThing: [TestType!]
   parameterizedField(id: String!): TestType
   cluck: Chicken
   unionField: UnionType
+  inputUnionTest(input: InputUnionType): UnionType
 }

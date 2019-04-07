@@ -122,6 +122,7 @@ export function getAutocompleteSuggestions(
     kind === 'EnumValue' ||
     (kind === 'ListValue' && step === 1) ||
     (kind === 'ObjectField' && step === 2) ||
+    (kind === 'InputUnion' && step === 2) ||
     (kind === 'Argument' && step === 2)
   ) {
     return getSuggestionsForInputValues(token, typeInfo);

@@ -53,20 +53,20 @@ input InputType {
 
 input AltInputType {
   key: String!
-  value: String
+  string: String!
 }
 
 type TestType {
   testField: String
 }
 
-# inputUnion Example = AltInputType | InputType
+inputUnion ExampleInputUnion = AltInputType | InputType
 
 type Query {
   hero(episode: Episode): Character
   human(id: String!): Human
   droid(id: String!): Droid
   inputTypeTest(args: InputType = {key: "key"}): TestType
-  inputUnionTest(args: InputType): TestType
+  inputUnionTest(args: ExampleInputUnion): TestType
   deprecatedField: TestType @deprecated(reason: "Use test instead.")
 }

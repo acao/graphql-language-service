@@ -91,6 +91,7 @@ export class GraphQLLanguageService {
             case UNION_TYPE_DEFINITION:
             case SCALAR_TYPE_DEFINITION:
             case INPUT_OBJECT_TYPE_DEFINITION:
+            case INPUT_UNION_TYPE_EXTENSION:
             case SCALAR_TYPE_EXTENSION:
             case OBJECT_TYPE_EXTENSION:
             case INTERFACE_TYPE_EXTENSION:
@@ -98,7 +99,6 @@ export class GraphQLLanguageService {
             case ENUM_TYPE_EXTENSION:
             case INPUT_OBJECT_TYPE_EXTENSION:
             case INPUT_UNION_TYPE_DEFINITION:
-            case INPUT_UNION_TYPE_EXTENSION:
             case DIRECTIVE_DEFINITION:
               return true;
           }
