@@ -19,6 +19,7 @@ import {
   getOutline,
 } from 'graphql-language-service-interface';
 import {Position} from 'graphql-language-service-utils';
+
 import path from 'path';
 
 const GRAPHQL_SUCCESS_CODE = 0;
@@ -121,7 +122,11 @@ function _getDiagnostics(
 function _getOutline(queryText: string): EXIT_CODE {
   try {
     const outline = getOutline(queryText);
-    process.stdout.write(JSON.stringify(outline, null, 2));
+    if (outline) {
+      process.stdout.write(JSON.stringify(outline, null, 2));
+    } else {
+      throw Error('Error parsing or no outline tree found');
+    }
   } catch (error) {
     process.stderr.write(error);
     return GRAPHQL_FAILURE_CODE;

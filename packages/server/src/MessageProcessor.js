@@ -35,7 +35,6 @@ import {
   ServerCapabilities,
 } from 'vscode-jsonrpc';
 import {
-  CompletionItem,
   CompletionRequest,
   CompletionList,
   DefinitionRequest,
@@ -362,9 +361,9 @@ export class MessageProcessor {
   async handleCompletionRequest(
     params: CompletionRequest.type,
     token: CancellationToken,
-  ): Promise<CompletionList | Array<CompletionItem>> {
+  ): Promise<?CompletionList> {
     if (!this._isInitialized) {
-      return [];
+      return null;
     }
 
     this.validateDocumentAndPosition(params);
@@ -391,7 +390,7 @@ export class MessageProcessor {
 
     // If there is no GraphQL query in this file, return an empty result.
     if (!found) {
-      return [];
+      return null;
     }
 
     const {query, range} = found;
