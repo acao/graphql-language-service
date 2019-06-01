@@ -262,7 +262,7 @@ export const ParseRules: {[name: string]: ParseRule} = {
     p('='),
     list('InputUnionMember', p('|')),
   ],
-  InputUnionMember: ['InputDef'],
+  InputUnionMember: ['NamedType'],
   EnumDef: [
     word('enum'),
     name('atom'),
