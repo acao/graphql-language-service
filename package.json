@@ -43,18 +43,18 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-plugin-transform-regenerator": "6.24.1",
     "babel-types": "6.26.0",
-    "chai": "4.1.2",
+    "chai": "4.2.0",
     "eslint": "4.14.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-babel": "4.1.2",
     "eslint-plugin-dependencies": "2.4.0",
     "eslint-plugin-flowtype": "2.40.1",
     "eslint-plugin-prefer-object-spread": "1.2.1",
-    "fetch-mock": "^6.0.0",
+    "fetch-mock": "^6.5.2",
     "flow-bin": "0.68.0",
     "graphql": "^14.3.0",
-    "lerna": "^2.0.0",
-    "mocha": "4.1.0",
+    "lerna": "^3.14.1",
+    "mocha": "6.1.4",
     "prettier": "1.13"
   }
 }
